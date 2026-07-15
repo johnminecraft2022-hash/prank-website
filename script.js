@@ -1,7 +1,6 @@
 const sounds = [
-    "sounds/sound1.mp3",
-    "sounds/sound2.mp3",
-    "sounds/sound3.mp3"
+    "sounds/tiki-tiki-boosted.mp3",
+    "sounds/hub-intro-sound.mp3",
 ];
 
 function playRandomSound() {
