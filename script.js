@@ -3,19 +3,17 @@ const sounds = [
     "sounds/hub-intro-sound.mp3",
 ];
 
-function playRandomSound() {
-    const random = sounds[Math.floor(Math.random() * sounds.length)];
-    const audio = new Audio(random);
+let played = false;
 
-    audio.play().catch(() => {
-        console.log("Autoplay blocked until user interacts.");
-    });
+function playRandomSound() {
+    if (played) return;
+    played = true;
+
+    const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+    const audio = new Audio(randomSound);
+
+    audio.play();
 }
 
-// Try immediately
-window.addEventListener("load", playRandomSound);
-
-// Fallback if browser blocks autoplay
-document.body.addEventListener("click", playRandomSound, { once: true });
-
-document.getElementById("playBtn").addEventListener("click", playRandomSound);
+document.addEventListener("click", playRandomSound, { once: true });
+document.addEventListener("keydown", playRandomSound, { once: true });
